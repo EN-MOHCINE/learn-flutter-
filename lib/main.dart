@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'quote.dart';
+import 'quote_card.dart';
 
 void main() {
   runApp(
@@ -155,33 +156,11 @@ class _MyCardState extends State<MyCard> {
 
 
   // create template quotes
-  Widget quoteTemplate(quote){
-    return Card(
-      margin: EdgeInsets.all(20.0),
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Text(
-              quote.text,
-              style: TextStyle(
-                fontSize: 18.0,
-                color: Colors.grey[600],
-              ),
-            ),
-            Text(
-              quote.author,
-              style: TextStyle(
-                fontSize: 14.0,
-                color: Colors.grey[800],
-              ),
-            ),
-          ],
-        ),
-      )
+  Widget quoteTemplate(quote , delete) {
 
-    ) ;
+   
+    // importing quote_card from another file
+    return quote_card(quote: quote  ,  delete: delete); ;
     
   } 
 
@@ -213,9 +192,17 @@ class _MyCardState extends State<MyCard> {
         
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          
           //  using map methode 
          children: <Widget>[
-            ...ninja.map((ninja) => quoteTemplate(ninja)).toList()
+            ...ninja.map((ninjaQuote) => quoteTemplate( 
+            ninjaQuote ,
+             (){  // Remove 'delete :' 
+              setState(() {
+                ninja.remove(ninjaQuote);
+              });
+            }
+          )).toList()
           ],
 
 
@@ -290,12 +277,9 @@ class _MyCardState extends State<MyCard> {
           
 
         ),
-        
-        
-
-
       ) ,
 
     );
   }
-} 
+}
+
