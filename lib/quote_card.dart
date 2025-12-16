@@ -10,6 +10,7 @@ class quote_card extends StatelessWidget {
     required this.delete
   });
 
+
   @override
   Widget build(BuildContext context) {
     return Card(
