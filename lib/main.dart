@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'quote.dart';
 import 'quote_card.dart';
+import 'TodoList/HomeTodo.dart';
 
 void main() {
   runApp(
     MaterialApp(
       // home: Text  ("hello world 1 "),
       // home: Home(),
-      home: MyCard(),
+      // home: MyCard(),
+      home: HomeTodo(),
+      debugShowCheckedModeBanner: false, 
+      theme: ThemeData(primarySwatch: Colors.indigo), 
     )
   );
 } 
